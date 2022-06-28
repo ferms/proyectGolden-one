@@ -1,0 +1,117 @@
+<div class="login-root">
+  <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+    <div class="loginbackground box-background--white padding-top--64">
+      <div class="loginbackground-gridContainer">
+        <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+          <div class="box-root"
+            style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+          </div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+          <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+          <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+          <div class="box-root box-background--blue " style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+          <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+          <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+          <div class="box-root box-background--blue " style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+          <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+          <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+      <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+        <h1><a href="#" rel="dofollow">Exercise 1</a></h1>
+      </div>
+      <div class="formbg-outer">
+        <div class="formbg">
+          <div class="formbg-inner padding-horizontal--48">
+            <span class="padding-bottom--15">Component with a reactive form with two fields</span>
+            <form id="stripe-login" [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="field padding-bottom--24">
+                <label for="text">Product name</label>
+
+                <input type="text" formControlName="productName" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['productName'].errors }" />
+                <div *ngIf="submitted && f['productName'].errors" class="invalid-feedback">
+                  <div *ngIf="f['productName'].errors['required']">Product name is required</div>
+                  <div *ngIf="f['productName'].errors['minlength']">
+                    Product name must be at least 6 characters
+                  </div>
+                  <div *ngIf="f['productName'].errors['maxlength']">
+                    Product name must not exceed 20 characters
+                  </div>
+                </div>
+
+                <!-- <input type="text" name="productName"> -->
+              </div>
+              <div class="field padding-bottom--24">
+                <div class="grid--50-50">
+                  <label for="price">Price</label>
+                </div>
+                <input type="text" formControlName="price" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" />
+                <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                  <div *ngIf="f['price'].errors['required']">Price is required</div>
+                  <div *ngIf="f['price'].errors['min']">
+                    El numero debe ser mayor a 5
+                  </div>
+                  <div *ngIf="f['price'].errors['max']">
+                    El numero debe ser menor a 20
+                  </div>
+                  <div *ngIf="f['price'].errors['pattern']">
+                    El valor debe ser un numero entero
+                  </div>
+                </div>
+              </div>
+
+              <div class="field padding-bottom--24">
+                <button type="submit" class="btn btn-primary">Register</button>
+                <!-- <input type="submit" name="submit" value="Continue"> -->
+              </div>
+              <div class="field">
+                <!-- <a class="ssolink" href="#">Use single sign-on (Google) instead</a> -->
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="footer-link padding-top--24">
+          <!-- <span>Don't have an account? <a href="">Sign up</a></span> -->
+          <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+            <span><a href="#">© Exercise 1</a></span>
+            <span><a href="#">Contact</a></span>
+            <span><a href="#">Privacy & terms</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="alert-content" *ngIf="activeAlert "
+  [ngClass]="{'info': isRequired, 'warning': isErrors, 'success': isSuccess }">
+  <div class="cont-text">
+    <div class="iconandtext">
+      <p class="center" *ngIf="isRequired">The fields are required</p>
+      <p class="center" *ngIf="isErrors">Write valid fields</p>
+      <p class="center" *ngIf="isSuccess">The fields are correct</p>
+
+
+    </div>
+  </div>
+</div>
